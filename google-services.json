@@ -7,12 +7,28 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:588145608541:android:049be76036899ca4c90ab4",
+        "mobilesdk_app_id": "1:588145608541:android:aa071399ed817e38c90ab4",
         "android_client_info": {
-          "package_name": "react.ecommerce.com"
+          "package_name": "com.ashik17.pushNotifExample"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "588145608541-70f14pp294m60nn6ec9fmqu5cjkskv87.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ashik17.pushNotifExample",
+            "certificate_hash": "dc08bb20f4aeb1891acc8d0329f0cf1d59f9b754"
+          }
+        },
+        {
+          "client_id": "588145608541-k7c0sqkckroggb3ulsnogsng8iad3r58.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ashik17.pushNotifExample",
+            "certificate_hash": "14e06f66776c2f2cebe4d073a84bc260b8c1762d"
+          }
+        },
         {
           "client_id": "588145608541-ng6c4im7dmjmartjfr3huld6rogs95vm.apps.googleusercontent.com",
           "client_type": 3

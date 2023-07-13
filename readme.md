@@ -1,0 +1,1 @@
+babel.config.js => jsx ke react native e convert kore 

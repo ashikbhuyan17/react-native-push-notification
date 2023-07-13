@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { StyleSheet, Text, View, Alert } from 'react-native';
-
+import messaging from '@react-native-firebase/messaging';
 export default function App() {
   async function requestUserPermission() {
     const authStatus = await messaging().requestPermission();
@@ -16,9 +16,11 @@ export default function App() {
 
   useEffect(() => {
     if (requestUserPermission) {
-      messaging().getToken.then((token) => {
-        console.log(token);
-      });
+      messaging()
+        .getToken()
+        .then((token) => {
+          console.log(token);
+        });
     } else {
       console.log('failed token status', authStatus);
     }
@@ -32,9 +34,7 @@ export default function App() {
             'Notification caused app to open from quit state:',
             remoteMessage.notification
           );
-          // setInitialRoute(remoteMessage.data.type); // e.g. "Settings"
         }
-        // setLoading(false);
       });
 
     // Assume a message-notification contains a "type" property in the data payload of the screen to open
@@ -43,14 +43,19 @@ export default function App() {
         'Notification caused app to open from background state:',
         remoteMessage.notification
       );
+      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
     });
 
     // Register background handler
     messaging().setBackgroundMessageHandler(async (remoteMessage) => {
-      console.log('Message handled in the background!', remoteMessage);
+      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
     });
 
     const unsubscribe = messaging().onMessage(async (remoteMessage) => {
+      console.log(
+        '🚀 ~ file: App.js:58 ~ unsubscribe ~ remoteMessage:',
+        remoteMessage
+      );
       Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
     });
 
@@ -58,6 +63,9 @@ export default function App() {
   }, []);
   return (
     <View style={styles.container}>
+      <Text>FCM Tutorial </Text>
+      <Text>FCM Tutorial </Text>
+      <Text>FCM Tutorial </Text>
       <Text>FCM Tutorial </Text>
       <StatusBar style="auto" />
     </View>
