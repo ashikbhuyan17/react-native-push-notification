@@ -1,7 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
-import { StyleSheet, Text, View, Alert } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Alert,
+  SafeAreaView,
+  ScrollView,
+} from 'react-native';
 import messaging from '@react-native-firebase/messaging';
+import Get from './components/Get';
+import Post from './components/Post';
 export default function App() {
   async function requestUserPermission() {
     const authStatus = await messaging().requestPermission();
@@ -62,21 +71,36 @@ export default function App() {
     return unsubscribe;
   }, []);
   return (
-    <View style={styles.container}>
-      <Text>FCM Tutorial </Text>
-      <Text>FCM Tutorial </Text>
-      <Text>FCM Tutorial </Text>
-      <Text>FCM Tutorial </Text>
-      <StatusBar style="auto" />
-    </View>
+    // <View style={styles.container}>
+    //   {/* <Text>FCM Tutorial </Text>
+    //   <Text>FCM Tutorial </Text>
+    //   <Text>FCM Tutorial </Text>
+    //   <Text>FCM Tutorial </Text> */}
+    //   <Get />
+    //   <Post />
+    //   <StatusBar style="auto" />
+    // </View>
+    <SafeAreaView style={styles.container}>
+      {/* <ScrollView style={styles.scrollView}> */}
+      <Text style={styles.text}>Page content</Text>
+      <Get />
+      <Post />
+      <Post />
+      {/* </ScrollView> */}
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: StatusBar.currentHeight,
+  },
+  scrollView: {
+    backgroundColor: 'pink',
+    marginHorizontal: 20,
+  },
+  text: {
+    fontSize: 42,
   },
 });
